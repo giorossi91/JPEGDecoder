@@ -39,7 +39,7 @@ Bodmer (26/2/22): Removed deprecated SPIFFS
 */
 
 #include "JPEGDecoder.h"
-#include "picojpeg.h"
+#include "picojpegmod.h"
 
 JPEGDecoder JpegDec;
 
@@ -93,7 +93,7 @@ uint8_t JPEGDecoder::pjpeg_need_bytes_callback(uint8_t* pBuf, uint8_t buf_size, 
 
 int JPEGDecoder::decode_mcu(void) {
 
-	status = picojpegns::pjpeg_decode_mcu();
+	status = picojpegns::pjpeg_decode_mcu_new();
 
 	if (status) {
 		is_available = 0 ;
@@ -419,7 +419,7 @@ int JPEGDecoder::decodeCommon(void) {
 	MCUWidth = 0;
 	MCUHeight = 0;
 
-	status = picojpegns::pjpeg_decode_init(&image_info, pjpeg_callback, NULL, 0);
+	status = picojpegns::pjpeg_decode_init_new(&image_info, pjpeg_callback, NULL, 0);
 
 	if (status) {
 		#ifdef DEBUG

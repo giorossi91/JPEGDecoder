@@ -1,6 +1,6 @@
 {
   "name": "JPEGDecoder",
-  "version": "2.0.1_mod",
+  "version": "2.0.1",
   "keywords": "jpeg, jpg, decoder, TFT",
   "description": "A JPEG decoder library, tested on Mega, Due and ESP8266",
   "repository":

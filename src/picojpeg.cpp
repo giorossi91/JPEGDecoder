@@ -2272,7 +2272,7 @@ static uint8 decodeNextMCU(void)
    return 0;
 }
 //------------------------------------------------------------------------------
-unsigned char pjpeg_decode_mcu(void)
+unsigned char pjpeg_decode_mcu_new(void)
 {
    uint8 status;
    
@@ -2297,7 +2297,7 @@ unsigned char pjpeg_decode_mcu(void)
    return 0;
 }
 //------------------------------------------------------------------------------
-unsigned char pjpeg_decode_init(pjpeg_image_info_t *pInfo, pjpeg_need_bytes_callback_t pNeed_bytes_callback, void *pCallback_data, unsigned char reduce)
+unsigned char pjpeg_decode_init_new(pjpeg_image_info_t *pInfo, pjpeg_need_bytes_callback_t pNeed_bytes_callback, void *pCallback_data, unsigned char reduce)
 {
    uint8 status;
    
