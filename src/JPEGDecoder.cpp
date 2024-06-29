@@ -93,12 +93,12 @@ uint8_t JPEGDecoder::pjpeg_need_bytes_callback(uint8_t* pBuf, uint8_t buf_size, 
 
 int JPEGDecoder::decode_mcu(void) {
 
-	status = pjpeg_decode_mcu();
+	status = picojpegns::pjpeg_decode_mcu();
 
 	if (status) {
 		is_available = 0 ;
 
-		if (status != PJPG_NO_MORE_BLOCKS) {
+		if (status != picojpegns::PJPG_NO_MORE_BLOCKS) {
 			#ifdef DEBUG
 			Serial.print("pjpeg_decode_mcu() failed with status ");
 			Serial.println(status);
@@ -137,7 +137,7 @@ int JPEGDecoder::read(void) {
 
 			const int bx_limit = jpg_min(8, image_info.m_width - (mcu_x * image_info.m_MCUWidth + x));
 
-			if (image_info.m_scanType == PJPG_GRAYSCALE) {
+			if (image_info.m_scanType == picojpegns::PJPG_GRAYSCALE) {
 				int bx, by;
 				for (by = 0; by < by_limit; by++) {
 					uint16_t *pDst = pDst_block;
@@ -221,7 +221,7 @@ int JPEGDecoder::readSwappedBytes(void) {
 
 			const int bx_limit = jpg_min(8, image_info.m_width - (mcu_x * image_info.m_MCUWidth + x));
 
-			if (image_info.m_scanType == PJPG_GRAYSCALE) {
+			if (image_info.m_scanType == picojpegns::PJPG_GRAYSCALE) {
 				int bx, by;
 				for (by = 0; by < by_limit; by++) {
 					uint16_t *pDst = pDst_block;
@@ -415,18 +415,18 @@ int JPEGDecoder::decodeCommon(void) {
 	comps = 0;
 	MCUSPerRow = 0;
 	MCUSPerCol = 0;
-	scanType = (pjpeg_scan_type_t)0;
+	scanType = (picojpegns::pjpeg_scan_type_t)0;
 	MCUWidth = 0;
 	MCUHeight = 0;
 
-	status = pjpeg_decode_init(&image_info, pjpeg_callback, NULL, 0);
+	status = picojpegns::pjpeg_decode_init(&image_info, pjpeg_callback, NULL, 0);
 
 	if (status) {
 		#ifdef DEBUG
 		Serial.print("pjpeg_decode_init() failed with status ");
 		Serial.println(status);
 
-		if (status == PJPG_UNSUPPORTED_MODE) {
+		if (status == picojpegns::PJPG_UNSUPPORTED_MODE) {
 			Serial.println("Progressive JPEG files are not supported.");
 		}
 		#endif

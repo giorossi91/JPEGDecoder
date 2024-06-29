@@ -63,7 +63,7 @@ https://github.com/Bodmer/JPEGDecoder
   #endif
 
   
-#include "picojpeg.h"
+#include "picojpegmod.h"
 
 enum {
   JPEG_ARRAY = 0,
@@ -92,8 +92,8 @@ private:
 #ifdef LOAD_FLASH_FS
   fs::File g_pInFileFs;
 #endif
-  pjpeg_scan_type_t scan_type;
-  pjpeg_image_info_t image_info;
+  picojpegns::pjpeg_scan_type_t scan_type;
+  picojpegns::pjpeg_image_info_t image_info;
   
   int is_available;
   int mcu_x;
@@ -121,7 +121,7 @@ public:
   int comps;
   int MCUSPerRow;
   int MCUSPerCol;
-  pjpeg_scan_type_t scanType;
+  picojpegns::pjpeg_scan_type_t scanType;
   int MCUWidth;
   int MCUHeight;
   int MCUx;

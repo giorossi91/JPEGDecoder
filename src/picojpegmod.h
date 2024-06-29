@@ -1,11 +1,13 @@
 //------------------------------------------------------------------------------
 // picojpeg - Public domain, Rich Geldreich <richgel99@gmail.com>
 //------------------------------------------------------------------------------
-#ifndef PICOJPEG_H
-#define PICOJPEG_H
+#ifndef PICOJPEGMOD_H
+#define PICOJPEGMOD_H
 
 #ifdef __cplusplus
 extern "C" {
+  
+namespace picojpegns {
 #endif
 
 // Error codes
@@ -123,7 +125,9 @@ unsigned char pjpeg_decode_init(pjpeg_image_info_t *pInfo, pjpeg_need_bytes_call
 unsigned char pjpeg_decode_mcu(void);
 
 #ifdef __cplusplus
+} // end namespace picojpegns
+
 }
 #endif
 
-#endif // PICOJPEG_H
+#endif // PICOJPEGMOD_H
